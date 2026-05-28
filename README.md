@@ -46,7 +46,3 @@ capteur.ino : Code Arduino (DHT11 + Ethernet)
 - Arduino avec shield Ethernet 
 - Capteur DHT11 sur la broche D2
 - Bibliothèques Arduino : DHT sensor library, Ethernet
-}
-```
-
-Réponse succès : `{"ok":true,"id":"baie_..."}`
