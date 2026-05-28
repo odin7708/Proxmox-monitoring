@@ -32,8 +32,8 @@ try {
             ->execute([
                 'px_' . uniqid(),
                 PVE_ID,
-                (int) round(($node['cpu'] ?? 0) * 100),
-                (int) round(($node['memory']['used'] ?? 0) / 1024 / 1024),
+                round(($node['cpu'] ?? 0) * 100, 2),
+                round(($node['memory']['used'] ?? 0) / 1024 / 1024, 2),
                 round((($node['rootfs']['used'] ?? 0) / ($node['rootfs']['total'] ?? 1)) * 100, 2),
             ]);
     }
@@ -51,8 +51,8 @@ try {
                 ->execute([
                     'vm_' . uniqid(),
                     $vmid,
-                    (int) round(($s['cpu'] ?? 0) * 100),
-                    (int) round(($s['mem'] ?? 0) / 1024 / 1024),
+                    round(($s['cpu'] ?? 0) * 100, 2),
+                    round(($s['mem'] ?? 0) / 1024 / 1024, 2),
                 ]);
         }
     }
