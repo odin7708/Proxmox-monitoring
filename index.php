@@ -44,12 +44,12 @@ $vms = $pdo->query("SELECT v.name, mv.cpu, mv.ram, mv.timestamp FROM vm v LEFT J
 <div class="grid">
     <div class="card">
         <div class="label">CPU</div>
-        <div class="value"><?= $px['cpu'] ?? '--' ?><span> %</span></div>
+        <div class="value"><?= $px ? number_format($px['cpu'],2) : '--' ?><span> %</span></div>
         <div class="time"><?= $px['timestamp'] ?? '' ?></div>
     </div>
     <div class="card">
         <div class="label">RAM</div>
-        <div class="value"><?= $px ? round($px['ram']/1024,1) : '--' ?><span> GB</span></div>
+        <div class="value"><?= $px ? number_format($px['ram']/1024,2) : '--' ?><span> GB</span></div>
         <div class="time"><?= $px['timestamp'] ?? '' ?></div>
     </div>
     <div class="card">
@@ -64,8 +64,8 @@ $vms = $pdo->query("SELECT v.name, mv.cpu, mv.ram, mv.timestamp FROM vm v LEFT J
 <?php foreach ($vms as $vm): ?>
     <div class="card">
         <div class="label"><?= htmlspecialchars($vm['name']) ?></div>
-        <div class="value"><?= $vm['cpu'] ?? '--' ?><span> % CPU</span></div>
-        <div class="value" style="font-size:1.2rem"><?= $vm['ram'] ? round($vm['ram']/1024,1) : '--' ?><span> GB RAM</span></div>
+        <div class="value"><?= $vm['cpu'] !== null ? number_format($vm['cpu'],2) : '--' ?><span> % CPU</span></div>
+        <div class="value" style="font-size:1.2rem"><?= $vm['ram'] ? number_format($vm['ram']/1024,2) : '--' ?><span> GB RAM</span></div>
         <div class="time"><?= $vm['timestamp'] ?? '' ?></div>
     </div>
 <?php endforeach; ?>
